@@ -1,13 +1,16 @@
-# OFMAPI TypeScript / Node.js SDK
+# OnlyFans API for TypeScript and Node.js (OFMAPI)
 
-**Status: planned, not yet published.** There is no `@ofmapi/onlyfans`
-package on npm, and the package named `onlyfans` on npm is unrelated to
-OFMAPI. Do not install either expecting an OFMAPI client.
+Use the OFMAPI OnlyFans API from TypeScript, Node.js, Bun, Deno, browsers,
+and edge runtimes: fans and subscribers, messages and PPV, posts and the
+vault, earnings and statistics, plus signed webhooks. Generate a typed
+client from the OpenAPI 3.1 spec in about a minute, or call the REST
+endpoints with `fetch`.
 
-## Use OFMAPI from TypeScript today
+**Status: official SDK planned, not yet published.** There is no
+`@ofmapi/onlyfans` package on npm, and the package named `onlyfans` on npm
+is unrelated to OFMAPI. Do not install either expecting an OFMAPI client.
 
-Generate a type-safe client from the public OpenAPI 3.1 spec. The generated
-client runs in Node, Bun, Deno, browsers, and edge runtimes.
+## Generate a typed OnlyFans API client
 
 ```bash
 npm install -D @hey-api/openapi-ts
@@ -35,7 +38,7 @@ Or run the script in this repository, which does the same thing:
 
 Full walkthrough: https://ofmapi.com/docs/sdk/node
 
-Plain `fetch` works just as well:
+## Plain `fetch` works just as well
 
 ```ts
 const res = await fetch("https://api.ofmapi.com/v1/accounts", {
@@ -44,17 +47,24 @@ const res = await fetch("https://api.ofmapi.com/v1/accounts", {
 console.log(await res.json());
 ```
 
+Get an API key at https://app.ofmapi.com/api-keys (free during the public
+Beta, no card required), connect an OnlyFans account in the dashboard, and
+the account appears in that list.
+
 ## What OFMAPI is
 
-A typed REST API over OnlyFans for agencies and developers, plus a hosted
-MCP server (174 tools) for Claude, ChatGPT, Cursor, and VS Code. Free
-during the public Beta; no card required; documented usage limits apply.
+An independent, unofficial OnlyFans API for agencies and developers: typed
+REST endpoints, signed webhooks, and a hosted MCP server (174 tools) for
+Claude, ChatGPT, Cursor, and VS Code. There is no official OnlyFans
+developer API.
 
 - Website: https://ofmapi.com
 - Documentation: https://ofmapi.com/docs
 - Interactive API reference (no login): https://ofmapi.com/docs/api
 - OpenAPI spec: https://ofmapi.com/openapi.json
+- Code examples (Hono webhook receiver for Node, Bun, Deno, Workers): https://github.com/ofmapi/examples
 - Status: https://ofmapi.com/status
+- Contact and support: https://ofmapi.com/contact
 
 ## Roadmap
 
