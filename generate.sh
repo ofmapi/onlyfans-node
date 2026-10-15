@@ -1,14 +1,18 @@
 #!/usr/bin/env bash
 # Generate a typed TypeScript client for the OFMAPI OnlyFans API from the
-# public OpenAPI 3.1 spec. Output lands in ./src/ofmapi (git-ignored).
+# public OpenAPI 3.1 spec. Output lands in ./src/ofmapi (git-ignored),
+# including the fetch client, so there is no runtime package to install.
+# Needs Node.js 22.18+.
 #
 #   ./generate.sh
 #
 # Walkthrough with usage examples: https://ofmapi.com/docs/sdk/node
 set -euo pipefail
 
-npm install --no-audit --no-fund --save-dev @hey-api/openapi-ts
-npm install --no-audit --no-fund @hey-api/client-fetch
+# Pinned: Hey API makes breaking changes between minor releases, and the
+# generator does not run with TypeScript 7 (npm's default since 7.0).
+npm install --no-audit --no-fund --save-dev --save-exact \
+  @hey-api/openapi-ts@0.99.0 typescript@6.0.3
 npx @hey-api/openapi-ts \
   -i https://ofmapi.com/openapi.json \
   -o src/ofmapi \

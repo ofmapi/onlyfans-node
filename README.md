@@ -13,13 +13,19 @@ is unrelated to OFMAPI. Do not install either expecting an OFMAPI client.
 ## Generate a typed OnlyFans API client
 
 ```bash
-npm install -D @hey-api/openapi-ts
+npm install -D -E @hey-api/openapi-ts@0.99.0 typescript@6.0.3
 npx @hey-api/openapi-ts -i https://ofmapi.com/openapi.json -o src/ofmapi -c @hey-api/client-fetch
-npm install @hey-api/client-fetch
 ```
 
+The generator needs Node.js 22.18 or newer and TypeScript 5.5 to 6.x; it
+does not run with TypeScript 7, which npm installs by default. It writes
+the fetch client into `src/ofmapi` alongside the operations, so there is no
+separate runtime package to install. Versions are pinned because Hey API
+makes breaking changes between minor releases; this setup was last verified
+with openapi-ts 0.99.0 and TypeScript 6.0.3.
+
 ```ts
-import { client } from "@hey-api/client-fetch";
+import { client } from "./ofmapi/client.gen";
 import { listAccountsV1AccountsGet } from "./ofmapi";
 
 client.setConfig({
